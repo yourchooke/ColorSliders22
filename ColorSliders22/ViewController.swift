@@ -23,9 +23,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         coloredView.layer.cornerRadius = 20
         
-        redSliderPicker.value = 0
-        greenSliderPicker.value = 0
-        blueSliderPicker.value = 0
+        redSliderPicker.value = 1
+        greenSliderPicker.value = 1
+        blueSliderPicker.value = 1
         
         redColorValueLabel.text = String(redSliderPicker.value)
         greenColorValueLabel.text = String(greenSliderPicker.value)
@@ -34,12 +34,32 @@ class ViewController: UIViewController {
     }
 
     @IBAction func redSliderMove() {
+        
+        redColorValueLabel.text = String(format: "%.2f", redSliderPicker.value)
+        
+        changeColor()
+        
     }
     
     @IBAction func greenSliderMove() {
+        greenColorValueLabel.text = String(format: "%.2f", greenSliderPicker.value)
+
+        changeColor()
+        
     }
     
     @IBAction func blueSliderMove() {
+        blueColorValueLabel.text = String(format: "%.2f", blueSliderPicker.value)
+        
+        changeColor()
+    }
+    
+    private func changeColor() {
+        let redValue = CGFloat(redSliderPicker.value)
+        let greenValue = CGFloat(greenSliderPicker.value)
+        let blueValue = CGFloat(blueSliderPicker.value)
+        
+        coloredView.backgroundColor = UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1)
     }
     
     
